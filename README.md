@@ -8,13 +8,23 @@ How to use react-redux & redux-toolkit in the project
 
 **Step1:** Setting up store to save data with global scope
 
+![h1](images/Screenshot 2025-06-10 162419.png)
+
 **Step2:** Provide the redux store to React
+
+![h2](images/Screenshot 2025-06-10 162435.png)
 
 **Step3:** Create a Redux State Slice
 
 In my project I have created 2 slices help get data from api by using redux thunk.
 
+![h3](images/Screenshot 2025-06-10 163605.png)
+![h3](images/Screenshot 2025-06-10 163616.png)
+
 **Step4:** Use Redux State and Actions in React Components
+
+![h4](images/Screenshot 2025-06-10 163643.png)
+![h4](images/Screenshot 2025-06-10 163711.png)
 
 
 **EX2: Reimplement the Module Review of React Basic: Zustand**:
@@ -22,3 +32,11 @@ In my project I have created 2 slices help get data from api by using redux thun
 [Demo Video](https://drive.google.com/file/d/1pwX3YXJgc5Cmp1SIK30J34kgrBJ2vtY-/view?usp=sharing)
 
 When we use zustand for my project it easier than use redux-toolkit just create a create funtion and use it in component
+
+**Step1:** Create funtion
+![h4](images/Screenshot 2025-06-10 163748.png)
+![h4](images/Screenshot 2025-06-10 163802.png)
+
+**Step2:** Use in the Components
+![h4](images/Screenshot 2025-06-10 163841.png)
+![h4](images/Screenshot 2025-06-10 163858.png)
