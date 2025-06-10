@@ -43,7 +43,7 @@ export const useAuthorStore = create<AuthorState>((set, get) => ({
       const res = await axios.get(
         `https://openlibrary.org/search/authors.json?q=${query}&limit=${LIMIT}&offset=${offset}`
       );
-
+      
       const { docs, numFound } = res.data;
       set((state) => ({
         authors: [...state.authors, ...docs],
