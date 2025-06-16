@@ -1,4 +1,5 @@
 export interface Book {
+  key?: string;
   title: string;
   author_name: string[];
   language: string[];
@@ -7,6 +8,7 @@ export interface Book {
 }
 
 export interface Author {
+  key?: string;
   author_name: string[];
   language: string[];
   first_publish_year: number;
@@ -18,7 +20,12 @@ export interface Author {
 const Item = ({ book, item }: { book: boolean; item: Author | Book }) => {
   if (book) {
     return (
-      <div className="col-span-4 flex flex-col gap-3 items-start px-2 py-1 border-[1px] rounded-lg border-zinc-600">
+      <div
+        data-testid="item-container"
+        className={`col-span-4 flex flex-col gap-3 items-start px-2 py-1 border-[1px] rounded-lg border-zinc-600 ${
+          book && "book-item"
+        }`}
+      >
         <span>Title: {(item as Book)?.title}</span>
         <span>
           Author Name:{" "}
@@ -39,7 +46,12 @@ const Item = ({ book, item }: { book: boolean; item: Author | Book }) => {
   }
 
   return (
-    <div className="col-span-4 flex flex-col gap-3 items-start px-2 py-1 border-[1px] rounded-lg border-zinc-600">
+    <div
+      data-testid="item-container"
+      className={`col-span-4 flex flex-col gap-3 items-start px-2 py-1 border-[1px] rounded-lg border-zinc-600 ${
+        !book && "author-item"
+      }`}
+    >
       <span>
         Author Name:{" "}
         {(item as Author).author_name.map((item) => (

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1750038197382" clover="3.2.0">
+  <project timestamp="1750038197382" name="All files">
+    <metrics statements="50" coveredstatements="50" conditionals="48" coveredconditionals="41" methods="15" coveredmethods="15" elements="113" coveredelements="106" complexity="0" loc="50" ncloc="50" packages="3" files="4" classes="4"/>
+    <package name="components">
+      <metrics statements="9" coveredstatements="9" conditionals="22" coveredconditionals="18" methods="5" coveredmethods="5"/>
+      <file name="Item.tsx" path="D:\Training\React\state_management\state_management_zustand\src\components\Item.tsx">
+        <metrics statements="9" coveredstatements="9" conditionals="22" coveredconditionals="18" methods="5" coveredmethods="5"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="21" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="22" count="2" type="stmt"/>
+        <line num="33" count="2" type="stmt"/>
+        <line num="39" count="2" type="stmt"/>
+        <line num="48" count="2" type="stmt"/>
+        <line num="58" count="4" type="stmt"/>
+        <line num="64" count="4" type="stmt"/>
+        <line num="73" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="constants">
+      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="index.ts" path="D:\Training\React\state_management\state_management_zustand\src\constants\index.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="store">
+      <metrics statements="40" coveredstatements="40" conditionals="26" coveredconditionals="23" methods="10" coveredmethods="10"/>
+      <file name="useAuthorStore.ts" path="D:\Training\React\state_management\state_management_zustand\src\store\useAuthorStore.ts">
+        <metrics statements="16" coveredstatements="16" conditionals="9" coveredconditionals="8" methods="6" coveredmethods="6"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="30" count="4" type="stmt"/>
+        <line num="33" count="8" type="stmt"/>
+        <line num="35" count="4" type="stmt"/>
+        <line num="36" count="4" type="stmt"/>
+        <line num="37" count="4" type="cond" truecount="4" falsecount="0"/>
+        <line num="39" count="2" type="stmt"/>
+        <line num="41" count="2" type="stmt"/>
+        <line num="42" count="2" type="stmt"/>
+        <line num="43" count="2" type="stmt"/>
+        <line num="47" count="1" type="stmt"/>
+        <line num="48" count="1" type="stmt"/>
+        <line num="55" count="1" type="stmt"/>
+      </file>
+      <file name="useSearchStore.ts" path="D:\Training\React\state_management\state_management_zustand\src\store\useSearchStore.ts">
+        <metrics statements="24" coveredstatements="24" conditionals="17" coveredconditionals="15" methods="4" coveredmethods="4"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="19" count="6" type="stmt"/>
+        <line num="20" count="6" type="stmt"/>
+        <line num="25" count="6" type="stmt"/>
+        <line num="26" count="7" type="stmt"/>
+        <line num="27" count="7" type="cond" truecount="4" falsecount="0"/>
+        <line num="28" count="2" type="stmt"/>
+        <line num="32" count="6" type="stmt"/>
+        <line num="33" count="6" type="stmt"/>
+        <line num="35" count="6" type="cond" truecount="4" falsecount="0"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="38" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="39" count="4" type="stmt"/>
+        <line num="40" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="41" count="1" type="stmt"/>
+        <line num="44" count="6" type="stmt"/>
+        <line num="45" count="6" type="stmt"/>
+        <line num="46" count="6" type="stmt"/>
+        <line num="48" count="4" type="stmt"/>
+        <line num="50" count="4" type="stmt"/>
+        <line num="57" count="1" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>

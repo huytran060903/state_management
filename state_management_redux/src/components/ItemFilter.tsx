@@ -12,7 +12,7 @@ const ItemFilter = ({
   const [searchParams, setSearchParams] = useSearchParams();
 
   return (
-    <button
+    <button data-testid="button-search"
       onClick={() => {
         setSearchParams({
           filter: value.toLowerCase(),

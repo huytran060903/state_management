@@ -7,11 +7,12 @@ export interface Book {
 }
 
 export interface Author {
+  key? : string
   author_name: string[];
   language: string[];
   first_publish_year: number;
   edition_count: number;
-  name: string;
+  name?: string;
   top_work: string;
 }
 

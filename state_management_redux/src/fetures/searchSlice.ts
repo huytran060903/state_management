@@ -12,6 +12,7 @@ interface SearchState {
   error: string | null;
   data: Book[] | Author[];
   numFound: number;
+  searchTerm?: string;
 }
 
 interface Data {
@@ -74,9 +75,7 @@ const initialState: SearchState = {
 const searchSlice = createSlice({
   name: "search",
   initialState,
-  reducers: {
-   
-  },
+  reducers: {},
   extraReducers(builder) {
     builder.addCase(fetchBookAndAuthor.pending, (state) => {
       state.loading = true;

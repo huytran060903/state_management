@@ -102,6 +102,7 @@ const Header = () => {
           }}
           className="bg-white p-2 flex-1 outline-none "
           placeholder="Search"
+          data-testid="search-input"
         />
         {/* Display load infinite */}
         <div

@@ -7,7 +7,7 @@ import type { Author } from "../components/Item";
 import axios from "axios";
 import { NUMBER_ITEM_IN_A_PAGE } from "../constants";
 
-interface authorState {
+export interface authorState {
   list: Author[];
   page: number;
   loading: boolean;

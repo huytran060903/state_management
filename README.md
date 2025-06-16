@@ -27,6 +27,12 @@ In my project I have created 2 slices help get data from api by using redux thun
 ![h4](images/Screenshot 2025-06-10 163711.png)
 
 
+**Test:**
+
+![h4](images/Screenshot 2025-06-16 084420.png)
+
+
+
 **EX2: Reimplement the Module Review of React Basic: Zustand**:
 
 [Demo Video](https://drive.google.com/file/d/1pwX3YXJgc5Cmp1SIK30J34kgrBJ2vtY-/view?usp=sharing)
@@ -40,3 +46,8 @@ When we use zustand for my project it easier than use redux-toolkit just create 
 **Step2:** Use in the Components
 ![h4](images/Screenshot 2025-06-10 163841.png)
 ![h4](images/Screenshot 2025-06-10 163858.png)
+
+**Test:**
+
+![h4](images/Screenshot 2025-06-16 084348.png)
+
