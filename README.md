@@ -8,28 +8,27 @@ How to use react-redux & redux-toolkit in the project
 
 **Step1:** Setting up store to save data with global scope
 
-![h1](images/Screenshot 2025-06-10 162419.png)
+![h1](https://github.com/huytran060903/state_management/blob/main/images/Screenshot%202025-06-10%20162419.png?raw=true)
 
 **Step2:** Provide the redux store to React
 
-![h2](images/Screenshot 2025-06-10 162435.png)
+![h2](https://github.com/huytran060903/state_management/blob/main/images/Screenshot%202025-06-10%20162435.png)
 
 **Step3:** Create a Redux State Slice
 
 In my project I have created 2 slices help get data from api by using redux thunk.
 
-![h3](images/Screenshot 2025-06-10 163605.png)
-![h3](images/Screenshot 2025-06-10 163616.png)
+![h3](https://github.com/huytran060903/state_management/blob/main/images/Screenshot%202025-06-10%20163605.png)
+![h3](https://github.com/huytran060903/state_management/blob/main/images/Screenshot%202025-06-10%20163616.png)
 
 **Step4:** Use Redux State and Actions in React Components
 
-![h4](images/Screenshot 2025-06-10 163643.png)
-![h4](images/Screenshot 2025-06-10 163711.png)
-
+![h4](https://github.com/huytran060903/state_management/blob/main/images/Screenshot%202025-06-10%20163643.png)
+![h4](https://github.com/huytran060903/state_management/blob/main/images/Screenshot%202025-06-10%20163711.png)
 
 **Test:**
 
-![h4](images/Screenshot 2025-06-16 084420.png)
+![h4](https://github.com/huytran060903/state_management/blob/main/images/Screenshot%202025-06-16%20084420.png)
 
 
 
@@ -40,14 +39,14 @@ In my project I have created 2 slices help get data from api by using redux thun
 When we use zustand for my project it easier than use redux-toolkit just create a create funtion and use it in component
 
 **Step1:** Create funtion
-![h4](images/Screenshot 2025-06-10 163748.png)
-![h4](images/Screenshot 2025-06-10 163802.png)
+![h4](https://github.com/huytran060903/state_management/blob/main/images/Screenshot%202025-06-10%20163748.png)
+![h4](https://github.com/huytran060903/state_management/blob/main/images/Screenshot%202025-06-10%20163802.png)
 
 **Step2:** Use in the Components
-![h4](images/Screenshot 2025-06-10 163841.png)
-![h4](images/Screenshot 2025-06-10 163858.png)
+![h4](https://github.com/huytran060903/state_management/blob/main/images/Screenshot%202025-06-10%20163841.png)
+![h4](https://github.com/huytran060903/state_management/blob/main/images/Screenshot%202025-06-10%20163858.png)
 
 **Test:**
 
-![h4](images/Screenshot 2025-06-16 084348.png)
+![h4](https://github.com/huytran060903/state_management/blob/main/images/Screenshot%202025-06-16%20084348.png)
 
