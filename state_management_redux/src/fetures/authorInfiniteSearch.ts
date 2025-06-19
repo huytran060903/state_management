@@ -5,7 +5,7 @@ import {
 } from "@reduxjs/toolkit";
 import type { Author } from "../components/Item";
 import axios from "axios";
-import { NUMBER_ITEM_IN_A_PAGE } from "../constants";
+import { ITEMS_PER_PAGE } from "../constants";
 
 export interface authorState {
   list: Author[];
@@ -31,8 +31,8 @@ export const fetchAuthor = createAsyncThunk(
   async ({ query = "*", page }: FetchAuthorArgs) => {
     const res = await axios.get(
       `https://openlibrary.org/search/authors.json?q=${query}&offset=${
-        (page - 1) * NUMBER_ITEM_IN_A_PAGE
-      }&limit=${NUMBER_ITEM_IN_A_PAGE}`
+        (page - 1) * ITEMS_PER_PAGE
+      }&limit=${ITEMS_PER_PAGE}`
     );
 
     const { docs, numFound } = res.data;
@@ -40,7 +40,7 @@ export const fetchAuthor = createAsyncThunk(
     return {
       data: docs as Author[],
       hasMore:
-        (page - 1) * NUMBER_ITEM_IN_A_PAGE + NUMBER_ITEM_IN_A_PAGE < numFound,
+        (page - 1) * ITEMS_PER_PAGE + ITEMS_PER_PAGE < numFound,
     };
   }
 );

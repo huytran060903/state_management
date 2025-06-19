@@ -87,8 +87,7 @@ const Header = () => {
         <select
           value={curOption}
           onChange={handleChange}
-          className="border-r-[1px] border-amber-100 py-2 px-2"
-          style={{ backgroundColor: "#b0aba052" }}
+          className="border-r-[1px] border-amber-100 py-2 px-2 bg-[#b0aba052]"
         >
           {optionsType.map((optionItem) => (
             <option key={optionItem} value={optionItem}>
@@ -111,24 +110,22 @@ const Header = () => {
           } absolute bg-white top-10 border-[1px] rounded-lg p-2 max-h-52  left-0 right-0`}
         >
           <div className="max-h-50 overflow-y-auto  rounded mb-1">
-            {authors.length > 0 ? (
-              authors.map((author, i) => (
-                <div
-                  key={i}
-                  ref={i === authors.length - 1 ? lastAuthorRef : null}
-                  className="border-b "
-                >
-                  <p className="font-bold">{author.name}</p>
-                  <p className="text-sm text-gray-600">
-                    Top work: {author.top_work ?? "N/A"}
-                  </p>
-                </div>
-              ))
-            ) : (
-              <p>No found data</p>
-            )}
+            {authors.length > 0
+              ? authors.map((author, i) => (
+                  <div
+                    key={i}
+                    ref={i === authors.length - 1 ? lastAuthorRef : null}
+                    className="border-b "
+                  >
+                    <p className="font-bold">{author.name}</p>
+                    <p className="text-sm text-gray-600">
+                      Top work: {author.top_work ?? "N/A"}
+                    </p>
+                  </div>
+                ))
+              : !loading && <p className="text-center">No found data</p>}
             {loading && <div className="w-full text-center">Loading...</div>}
-            {error && <p style={{ color: "red" }}>{error}</p>}
+            {error && <p className="text-red-500">{error}</p>}
           </div>
         </div>
         {/*  */}

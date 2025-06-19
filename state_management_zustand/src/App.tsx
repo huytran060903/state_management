@@ -9,10 +9,13 @@ import Item from "./components/Item.tsx";
 import Pagination from "./components/Pagination.tsx";
 import { useSearchStore, type SearchState } from "./store/useSearchStore.ts";
 const App = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const [curFilter, setCurFilter] = useState("books");
   const inputRef = useRef<null | HTMLInputElement>(null);
-
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [typeBook, setTypeBook] = useState<string>(
+    searchParams.get("mode") || "everything"
+  );
 
   const { data, numFound, loading, error, fetchData }: SearchState =
     useSearchStore();
@@ -24,9 +27,18 @@ const App = () => {
     fetchData(
       curFilter.toLowerCase(),
       inputRef.current?.value || "hello",
-      page
+      page,
+      typeBook
     );
-  }, [curFilter, inputRef.current?.value, fetchData, page]); // trigger when one of the value in array change
+  }, [curFilter, inputRef.current?.value, fetchData, page, typeBook]); // trigger when one of the value in array change
+
+  const handleChangeTypeBook = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTypeBook(e.target.value);
+    setSearchParams((initParams) => {
+      initParams.set("mode", e.target.value);
+      return initParams;
+    });
+  };
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -35,18 +47,20 @@ const App = () => {
       filter: curFilter.toLowerCase(),
       search: inputRef.current ? inputRef.current.value : "",
       page: "1",
+      mode: typeBook,
     });
     //fetch data
     fetchData(
       curFilter.toLowerCase(),
       inputRef.current?.value || "hello",
-      searchParams.get("page") ? Number(searchParams.get("page")) : 1
+      searchParams.get("page") ? Number(searchParams.get("page")) : 1,
+      typeBook
     );
   };
   return (
     <div className="w-full p-0 m-0 box-border flex flex-col">
       <Heading />
-      <div className="px-8 py-3" style={{ backgroundColor: "#e1dcc5" }}>
+      <div className="px-8 py-3 bg-[#e1dcc5]">
         <Header />
         <div className="flex flex-col bg-white p-4 rounded-lg">
           <Search curFilter={curFilter} setFilter={setCurFilter} />
@@ -61,28 +75,50 @@ const App = () => {
                 <CiSearch size={30} className="text-slate-600" />
               </button>
             </div>
-            <div className="flex items-center gap-2">
-              <input name="type_book" defaultChecked type="radio" />
-              <label>Everything</label>
-            </div>
-            <div className="flex items-center gap-2">
-              <input name="type_book" type="radio" />
-              <label>Ebooks</label>
-            </div>
+            {curFilter === "books" && (
+              <>
+                <div className="flex items-center gap-2">
+                  <input
+                    name="type_book"
+                    value="everything"
+                    onChange={handleChangeTypeBook}
+                    defaultChecked
+                    checked={typeBook === "everything"}
+                    type="radio"
+                  />
+                  <label>Everything</label>
+                </div>
+                <div className="flex items-center gap-2">
+                  <input
+                    value="ebooks"
+                    name="type_book"
+                    checked={typeBook === "ebooks"}
+                    onChange={handleChangeTypeBook}
+                    type="radio"
+                  />
+                  <label>Ebooks</label>
+                </div>
+              </>
+            )}
           </form>
         </div>
       </div>
-      <div className="px-8 py-3 grid grid-cols-12">
+      <div className="px-8 py-3 grid grid-cols-12 gap-3">
+        {!loading && !error && numFound > 0 && (
+          <p className="col-span-12 my-3">Found: {numFound} </p>
+        )}
         {loading ? (
           <div className="col-span-12 text-center">Loading</div>
-        ) : data ? (
+        ) : data.length > 0 ? (
           data?.map((item, index: number) => (
             <Item key={index} book={curFilter === "books"} item={item} />
           ))
-        ) : null}
+        ) : (
+          <div className="col-span-12 text-center">Not found</div>
+        )}
       </div>
       <div className="flex justify-end w-full">
-        {!loading && !error && Array.isArray(data) && (
+        {!loading && !error && Array.isArray(data) && numFound > 0 && (
           <Pagination count={numFound} />
         )}
       </div>

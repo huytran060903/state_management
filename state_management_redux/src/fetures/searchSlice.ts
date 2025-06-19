@@ -5,7 +5,8 @@ import {
 } from "@reduxjs/toolkit";
 import type { Author, Book } from "../components/Item";
 import axios from "axios";
-import { NUMBER_ITEM_IN_A_PAGE } from "../constants";
+import { BASE_URL, ITEMS_PER_PAGE } from "../constants";
+import { getStringParams, type StringParams } from "../utils/helper";
 
 interface SearchState {
   loading: boolean;
@@ -23,10 +24,11 @@ interface SearchArgs {
   filter: string;
   search: string;
   page: number;
+  mode: string;
 }
 export const fetchBookAndAuthor = createAsyncThunk(
   "search/bookandauthor",
-  async ({ filter, search, page }: SearchArgs) => {
+  async ({ filter, search, page, mode }: SearchArgs) => {
     const filterObj: { title: string; author: string } = {
       title: "",
       author: "",
@@ -39,18 +41,63 @@ export const fetchBookAndAuthor = createAsyncThunk(
       }
     });
 
-    let url = "https://openlibrary.org/search.json?";
-    const offset = (page - 1) * NUMBER_ITEM_IN_A_PAGE;
+    const offset = (page - 1) * ITEMS_PER_PAGE;
+
+    const arrStringParams: StringParams[] = [
+      {
+        key: "offset",
+        value: offset.toString(),
+        setNew: true,
+      },
+      {
+        key: "limit",
+        value: ITEMS_PER_PAGE.toString(),
+        setNew: true,
+      },
+    ];
 
     if (filterObj.author && filterObj.title) {
-      url += `title=${filterObj.title}&offset=${offset}&limit=${NUMBER_ITEM_IN_A_PAGE}&author=${filterObj.author}`;
+      arrStringParams.push({
+        key: "title",
+        value: filterObj.title,
+        setNew: true,
+      });
+
+      arrStringParams.push({
+        key: "author",
+        value: filterObj.author,
+        setNew: true,
+      });
     } else {
       if (filter === "books") {
-        url += `title=${search}&offset=${offset}&limit=${NUMBER_ITEM_IN_A_PAGE}`;
+        arrStringParams.push({
+          key: "title",
+          value: search,
+          setNew: true,
+        });
       } else if (filter === "authors") {
-        url += `author=${search}&offset=${offset}&limit=${NUMBER_ITEM_IN_A_PAGE}`;
+        arrStringParams.push({
+          key: "author",
+          value: search,
+          setNew: true,
+        });
       }
     }
+    arrStringParams.push({
+      key: "mode",
+      value: mode,
+      setNew: true,
+    });
+
+    arrStringParams.push({
+      key: "has_fulltext",
+      value: "true",
+      setNew: mode === "everything" ? false : true,
+    });
+
+    const params = getStringParams(arrStringParams);
+
+    const url = `${BASE_URL}/search.json?${params}`;
 
     try {
       const res = await axios.get(url);

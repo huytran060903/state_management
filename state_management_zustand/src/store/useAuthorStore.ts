@@ -2,6 +2,7 @@
 import { create } from "zustand";
 import axios from "axios";
 import type { Author } from "../components/Item";
+import { BASE_URL } from "../constants";
 
 interface AuthorState {
   authors: Author[];
@@ -41,9 +42,9 @@ export const useAuthorStore = create<AuthorState>((set, get) => ({
     try {
       const offset = (page - 1) * LIMIT;
       const res = await axios.get(
-        `https://openlibrary.org/search/authors.json?q=${query}&limit=${LIMIT}&offset=${offset}`
+        `${BASE_URL}/search/authors.json?q=${query}&limit=${LIMIT}&offset=${offset}`
       );
-      
+
       const { docs, numFound } = res.data;
       set((state) => ({
         authors: [...state.authors, ...docs],

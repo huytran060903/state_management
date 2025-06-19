@@ -1,1 +1,2 @@
-export const NUMBER_ITEM_IN_A_PAGE = 10;
+export const ITEMS_PER_PAGE = 10;
+export const BASE_URL = "https://openlibrary.org"

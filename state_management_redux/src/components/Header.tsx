@@ -86,8 +86,7 @@ const Header = () => {
         <select
           value={curOption}
           onChange={handleChange}
-          className="border-r-[1px] border-amber-100 py-2 px-2"
-          style={{ backgroundColor: "#b0aba052" }}
+          className="border-r-[1px] border-amber-100 py-2 px-2 bg-[#b0aba052]"
         >
           {optionsType.map((optionItem) => (
             <option key={optionItem} value={optionItem}>
@@ -110,30 +109,29 @@ const Header = () => {
             curInp ? "block" : "hidden"
           } absolute bg-white top-10 border-[1px] rounded-lg p-2 max-h-52 overflow-y-auto left-0 right-0`}
         >
-          {list?.map((author, index) => (
-            <div
-              key={index}
-              ref={index === list.length - 1 ? lastBookRef : null}
-              style={{
-                padding: "10px",
-                margin: "10px 0",
-                background: "#f9f9f9",
-                border: "1px solid #ddd",
-              }}
-            >
+          {list?.length === 0 && !loading ? (
+            <div className="text-center">Not found</div>
+          ) : (
+            list?.map((author, index) => (
               <div
                 key={index}
-                className="p-2 rounded border border-gray-300 shadow-sm"
+                ref={index === list.length - 1 ? lastBookRef : null}
+                className="p-[10px] mx-[10px] bg-white border-[1px] border-[#ddd]"
               >
-                <p className="font-semibold">{author.name}</p>
-                <p className="text-sm text-gray-600">
-                  Top work: {author.top_work ?? "N/A"}
-                </p>
+                <div
+                  key={index}
+                  className="p-2 rounded border border-gray-300 shadow-sm"
+                >
+                  <p className="font-semibold">{author.name}</p>
+                  <p className="text-sm text-gray-600">
+                    Top work: {author.top_work ?? "N/A"}
+                  </p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))
+          )}
           {loading && <div className="w-full text-center">Loading...</div>}
-          {error && <p style={{ color: "red" }}>{error}</p>}
+          {error && <p className="text-red-500">{error}</p>}
         </div>
         {/*  */}
         <CiSearch size={28} />

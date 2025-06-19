@@ -3,11 +3,11 @@ import {
   MdOutlineKeyboardArrowLeft,
   MdOutlineKeyboardArrowRight,
 } from "react-icons/md";
-import { NUMBER_ITEM_IN_A_PAGE } from "../constants";
+import { ITEMS_PER_PAGE } from "../constants";
 const Pagination = ({ count }: { count: number }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const MAX_PAGE = Math.ceil(count / NUMBER_ITEM_IN_A_PAGE);
+  const MAX_PAGE = Math.ceil(count / ITEMS_PER_PAGE);
 
   const page = searchParams.get("page") ? Number(searchParams.get("page")) : 1;
 
@@ -22,12 +22,12 @@ const Pagination = ({ count }: { count: number }) => {
         Showing
         <span className="font-medium">
           {" "}
-          {(page - 1) * NUMBER_ITEM_IN_A_PAGE + 1}{" "}
+          {(page - 1) * ITEMS_PER_PAGE + 1}{" "}
         </span>
         from
         <span className="font-medium">
           {" "}
-          {page === MAX_PAGE ? count : page * NUMBER_ITEM_IN_A_PAGE}{" "}
+          {page === MAX_PAGE ? count : page * ITEMS_PER_PAGE}{" "}
         </span>
         data
       </p>
